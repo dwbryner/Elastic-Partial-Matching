@@ -2,8 +2,6 @@ clear;
 close all;
 clc;
 
-addpath('C:\Users\darshan.BRYNER\Documents\MATLAB\Optimization over Gamma\Function Registration\Elastic Partial Matching\Covid Data');
-
 filenames={'USA_covid_data_31JULY2020.mat','USA_covid_data_30SEPT2020.mat','USA_covid_data_30NOV2020.mat',...
     'Euro_covid_data_31JULY2020.mat','Euro_covid_data_30SEPT2020.mat','Euro_covid_data_30NOV2020.mat',...
     'USA_Euro_covid_data_31JULY2020.mat','USA_Euro_covid_data_30SEPT2020.mat','USA_Euro_covid_data_30NOV2020.mat'};
@@ -13,7 +11,9 @@ for i=1:length(filenames)
     load(filenames{i});
     c=lines(K);
     for k=1:K
-        plot(tk(k,:),fk(k,:),'color',c(k,:));
+        if ~strcmp(statenames{k},'Kazakhstan')
+            plot(tk(k,:),fk(k,:),'color',c(k,:));
+        end
     end
     axis tight; box;
     xlabel('Days Since First Case')
