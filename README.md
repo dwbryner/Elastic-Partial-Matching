@@ -7,15 +7,24 @@ Data:
 
 The package comes with four processed datasets: a simulated dataset entitled 'sim_data.mat' and three real COVID-19 datasets entitled 'USA_Euro_covid_data_31JULY2020.mat', 'USA_Euro_covid_data_30SEPT2020.mat', and 'USA_Euro_covid_data_30NOV2020.mat'. Each dataset mat file has the following variables:
 
-K - Number of functions in the dataset
-T - Number of sample points per function
-tk - K x T array with the kth row representing the time sample points for the kth function.
+
+K - Number of functions in the dataset. 
+
+T - Number of sample points per function.
+
+tk - K x T array with the kth row representing the time sample points for the kth function. Note: code assumes tk(k,1)=0 for all k and that time points are uniformly spaced.
+
 fk - K x T array with the kth row representing the kth function evaluated at its respective time points given in tk.
+
 qk - K x T array with the kth row representing the kth SRVF evaluated at its respective time points given in tk. 
+
 labels_true (simulated data only) - K x 1 array of true class labels. 
+
 statenames (COVID data only) - K x 1 cell array with the kth cell consisting of the state or country name (string) associated with the kth function (infection rate curve). 
 
+
 The COVID datasets consist of normalized infection rate curves for 52 US states (including DC and Puerto Rico) and 47 European countries truncated at three different time points - July 31, September 30, and November 30 of the year 2020 (see Section 4 of our paper for more details). We also include the raw data files 'CONVENIENT_global_confirmed_cases.xlsx' and 'CONVENIENT_us_confirmed_cases.xlsx' that we used to process the COVID datasets, which are current up to Dec 7, 2020. Use the script entitled 'process_covid_data.m' to preprocess the raw COVID data into the format accepted by the code package. In order to create a merged dataset of US states and global countries, it is necessary to run the script twice - once for each raw data file - selecting the state/country indices to keep or discard each time, and merge the results according to the code in the script. However, since the package already comes with processed data, it is not required to run this script. 
+
 
 Main scripts for data analysis:
 
@@ -27,11 +36,7 @@ Main scripts for data analysis:
 
 'run_cluster_separability.m' - This script runs the cluster separability analysis as shown in Fig. 12. 
 
-Scripts for algorithm performance experiments (1) - (4) in Section 4.2: 
-(1) test_comptime.m
-(2) test_gridpoints.m
-(3) test_gradient_init.m
-(4) test_lambda_values.m
+Scripts for algorithm performance experiments (1) - (4) in Section 4.2: (1) 'test_comptime.m', (2) 'test_gridpoints.m', (3) 'test_gradient_init.m', and (4) 'test_lambda_values.m'.
 
 
 
